@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klinik Turu | Dr. Emre Mengi</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+@import url('style.css');
+-item:hover > a { color: var(--cardio); }
+
+/* ── HERO SECTION ── */
+.tour-hero {
+  padding: 180px 0 100px;
+  background: radial-gradient(circle at top right, var(--cardio-soft), transparent 40%);
+  text-align: center;
+}
+.tour-hero h1 { font-size: 4.5rem; letter-spacing: -0.05em; line-height: 1.1; margin-bottom: 25px; }
+.tour-hero p { color: var(--muted); font-size: 1.25rem; max-width: 650px; margin: 0 auto 40px; }
+
+/* ── FEATURED VIBE (Split Layout) ── */
+.vibe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; margin-bottom: 50px; }
+.vibe-image { 
+    position: relative;
+    border-radius: 40px; 
+    overflow: hidden; 
+    height: 600px; 
+    box-shadow: var(--shadow-lg); 
+    width: 800px;
+}
+.vibe-image img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s ease; }
+.vibe-image:hover img { transform: scale(1.05); }
+
+.vibe-content h2 { font-size: 3rem; margin-bottom: 25px; letter-spacing: -0.03em; }
+.vibe-content p { font-size: 1.15rem; color: var(--muted); margin-bottom: 35px; }
+/* ── SLIDER STYLES ── */
+.vibe-image { 
+    position: relative;
+    border-radius: 40px; 
+    overflow: hidden; 
+    height: 600px; 
+    box-shadow: var(--shadow-lg); 
+}
+
+.slider-container {
+    display: flex;
+    width: 300%; /* Number of images * 100% */
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slider-container img {
+    width: 33.333%; /* 100 / Number of images */
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Dots for visual feedback */
+.slider-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dot.active {
+    background: white;
+    width: 30px;
+    border-radius: 10px;
+}
+/* ── GRID CARDS (Placements Fixed) ── */
+.gallery-section { background: var(--panel); border-radius: 60px; margin: 0 20px; padding: 100px 40px; }
+.area-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.area-card {
+  background: white;
+  border-radius: 30px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.area-card:hover { transform: translateY(-15px); border-color: var(--cardio); box-shadow: var(--shadow-hover); }
+.area-img { border-radius: 20px; height: 300px; overflow: hidden; margin-bottom: 20px; }
+.area-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+.area-info h3 { font-size: 1.4rem; margin-bottom: 12px; }
+
+/* ── TECHNOLOGY (Fixed Box Sizes) ── */
+.tech-container { overflow: hidden; padding: 20px 0; }
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.tech-card {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 40px 30px;
+  border-radius: 28px;
+  text-align: center;
+  transition: 0.3s;
+}
+.tech-card:hover { border-color: var(--cardio); background: var(--cardio-soft); }
+.tech-icon {
+  width: 64px; height: 64px; background: var(--cardio); color: white;
+  border-radius: 18px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; margin: 0 auto 25px; box-shadow: 0 10px 20px rgba(225, 29, 72, 0.2);
+}
+
+/* ── THE DOCTOR & STAFF (Focused) ── */
+.staff-layout { display: flex; flex-direction: column; align-items: center; gap: 80px; }
+.doctor-hero-card {
+    display: grid; grid-template-columns: 400px 1fr; gap: 60px;
+    background: white; border: 1px solid var(--border); padding: 40px;
+    border-radius: 40px; align-items: center; max-width: 1000px;
+}
+.doctor-photo { border-radius: 30px; width: 100%; height: 500px; object-fit: cover; }
+
+.assistants-grid {
+    display: grid; 
+    /* Change 1 to 2 or 3 depending on how many you want per row */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 30px; 
+    width: 100%; 
+    /* Increased max-width so they have room to sit side-by-side */
+    max-width: 1000px; 
+}
+.assistant-card { display: flex; align-items: center; gap: 20px; background: var(--panel); padding: 20px; border-radius: 20px; }
+.assistant-photo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid white; }
+
+
+/* ── MOBILE FIXES ── */
+/* ── FIXED MOBILE SECTION ── */
+@media (max-width: 1100px) {
+    .vibe-grid, .area-grid, .tech-grid, .doctor-hero-card, .assistants-grid { grid-template-columns: 1fr; }
+    .container { padding: 0 25px; }
+    .tour-hero h1 { font-size: 3rem; }
+    .doctor-photo { height: 400px; }
+    .assistants-grid { 
+        grid-template-columns: 1fr; 
+        max-width: 400px; 
+    }
+} /* <--- This closing brace was missing! */
+
+/* ── PATIENT CENTRIC ADDITIONS ── */
+/* ── UPDATED SLIDER STYLES ── */
+.vibe-image { 
+    position: relative;
+    border-radius: 40px; 
+    overflow: hidden; 
+    height: 600px; 
+    box-shadow: var(--shadow-lg); 
+}
+
+.slider-container {
+    display: flex;
+    width: 300%; /* Matches number of slides */
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide {
+    width: 33.333%;
+    height: 100%;
+    overflow: hidden; /* This is the key fix: it clips the zoom */
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s ease; /* Smooth zoom */
+}
+
+/* Now the zoom is safe and won't show the next image */
+.slide:hover img {
+    transform: scale(1.08);
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+    background: rgba(0,0,0,0.1);
+    padding: 8px 15px;
+    border-radius: 100px;
+    backdrop-filter: blur(4px);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dot.active {
+    background: white;
+    width: 24px;
+    border-radius: 10px;
+}
+
+/* ── FIXED MOBILE SECTION ── */
+@media (max-width: 1100px) {
+    .vibe-grid, .area-grid, .tech-grid, .doctor-hero-card, .assistants-grid { grid-template-columns: 1fr; }
+    .container { padding: 0 25px; }
+    .tour-hero h1 { font-size: 3rem; }
+    .doctor-photo { height: 400px; }
+    .assistants-grid { 
+        grid-template-columns: 1fr; 
+        max-width: 400px; 
+    }
+} /* <--- This closing brace was missing! */
+
+/* ── PATIENT CENTRIC ADDITIONS ── */
+.info-box-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.clean-box {
+    background: #ffffff;
+    border: 1px solid #e5e7eb; /* Fallback border color */
+    border-radius: 24px;
+    padding: 35px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.clean-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.box-tag {
+    align-self: flex-start;
+    padding: 6px 14px;
+    background: var(--cardio-soft, #fff1f2);
+    color: var(--cardio, #e11d48);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.step-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+}
+
+.step-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 18px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--muted, #64748b);
+}
+
+.step-number {
+    width: 26px;
+    height: 26px;
+    background: var(--cardio, #e11d48);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container nav-row">
+    <a href="index.html" class="logo">
+      <img src="logo.jpg" alt="Uzman Dr. EMRE MENGİ" style="height: 80px; width: auto; margin-top: 10px;">
+    </a>
+
+    <ul class="nav-links">
+        <li class="nav-item"><a href="why-me.html">Neden Emre Mengi?</a></li>
+      <li class="nav-item">
+        <a href="treatments.html">Tedaviler & Hizmetler</a>
+        <div class="mega-menu">
+          <a href="#" class="sub-link-nav"><strong>Kardiyoloji Muayene Takibi</strong><span>Detaylı Analiz ve Tarama.</span></a>
+          <a href="#" class="sub-link-nav"><strong>Tansiyon Holter</strong><span>Kalp Ritim Bozukluğu.</span></a>
+          <a href="#" class="sub-link-nav"><strong>Koroner Anjiyografi</strong><span>Damar Tıkanıklığı.</span></a>
+          <a href="#" class="sub-link-nav"><strong>Ekokardiyografi</strong><span>Radyasyonsuz Kalp Muayenesi</span></a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="index.html" style="color: var(--cardio); font-weight: 700;">Klinik Turu</a></li>
+      <li class="nav-item"><a href="blog.html">Sağlık Rehberi</a></li>
+      <li class="nav-item"><a href="contact.html">İletişim</a></li>
+    </ul>
+
+    <div class="nav-right-group">
+
+      <div class="nav-contact-container">
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <div class="contact-text">
+            <span class="contact-label">Hemen Arayın</span>
+            <span class="contact-value">0540 119 35 35</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <div class="contact-text">
+            <span class="contact-label">Hafta İçi</span>
+            <span class="contact-value">10:00 - 19:00</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <div class="contact-text">
+            <span class="contact-label">Cumartesi</span>
+            <span class="contact-value">10:00 - 16:00</span>
+          </div>
+        </div>
+      </div>
+    </div> </div>
+</nav>
+
+<header class="tour-hero">
+  <div class="container">
+    <span style="color: var(--cardio); font-weight: 800; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem;">KLİNİK DENEYİMİ</span>
+    <h1>Kalbiniz Güvenli <br>Ellerde.</h1>
+    <p>Modern tıbbın imkanlarını, ev konforunda bir sıcaklıkla birleştirdik. İzmir Aliağa'daki teknoloji odaklı yeni nesil kliniğimizi keşfedin.</p>
+  </div>
+</header>
+
+<section class="container section-padding">
+  <div class="vibe-grid">
+    <div class="vibe-image" id="waiting-room-slider">
+    <div class="slider-container" id="slider-track">
+        <div class="slide"><img src="waiting-room-1.jpg" alt="Lobi Giriş"></div>
+        <div class="slide"><img src="waiting-room-2.jpg" alt="Bekleme Alanı Detay"></div>
+        <div class="slide"><img src="waiting-room-3.jpg" alt="İkram Alanı"></div>
+    </div>
+    
+    <div class="slider-dots">
+        <div class="dot active" onclick="jumpToSlide(0)"></div>
+        <div class="dot" onclick="jumpToSlide(1)"></div>
+        <div class="dot" onclick="jumpToSlide(2)"></div>
+    </div>
+</div>
+    <div class="vibe-content">
+      <h2 style="color: var(--cardio);">Estetik ve Fonksiyonel</h2>
+      <p>Bekleme alanımız, hastalarımızın muayene öncesi stresini minimize etmek için geniş, ferah ve sakinleştirici tonlarda tasarlandı.</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div style="background: var(--cardio-soft); padding: 20px; border-radius: 15px;">
+              <h4 style="color:var(--cardio)">Sıfır Bekleme</h4>
+              <p style="font-size: 0.85rem; color: var(--muted)">Randevu sistemimizle vaktiniz size kalır.</p>
+          </div>
+          <div style="background: var(--cardio-soft); padding: 20px; border-radius: 15px;">
+              <h4 style="color:var(--cardio)">VIP Konfor</h4>
+              <p style="font-size: 0.85rem; color: var(--muted)">Özel ikramlar ve dinlenme alanları.</p>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 70px;">
+      <h2 style="font-size: 2.5rem;">Klinik Turu</h2>
+      <p style="color: var(--muted)">Her oda, hassas teşhis için özel olarak optimize edildi.</p>
+    </div>
+
+    <div class="area-grid">
+      <div class="area-card">
+        <div class="area-img"><img src="specialist.jpg" alt="Muayene"></div>
+        <div class="area-info">
+          <h3>Uzman Görüşme</h3>
+          <p>Dr. Emre Mengi ile tüm süreci detaylarıyla planlayacağınız ana merkezimiz.</p>
+        </div>
+      </div>
+      <div class="area-card">
+        <div class="area-img"><img src="ekokardiyografi.jpg" alt="EKO"></div>
+        <div class="area-info">
+          <h3>Eko Ünitesi</h3>
+          <p>Kalbinizin 4 boyutlu haritasını çıkardığımız yüksek sessizlikteki test odası.</p>
+        </div>
+      </div>
+      <div class="area-card">
+        <div class="area-img"><img src="efor-test.jpg" alt="Stress Test"></div>
+        <div class="area-info">
+          <h3>Efor & Takip</h3>
+          <p>Kalbinizin yük altındaki performansını ölçen gelişmiş efor laboratuvarı.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<section style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+  <div style="text-align: center; margin-bottom: 20px; margin-top: 60px;">
+        <h3 style="font-size: 2rem;">İleri Tıbbi Teknoloji</h3>
+    </div>
+    <div class="tech-grid">
+        <div class="tech-card">
+            <div class="tech-icon"><i class="fas fa-microchip"></i></div>
+            <h3>4D EKO</h3>
+            <p style="font-size: 0.9rem; color: var(--muted)">GE Vivid Serisi ile en derin doku analizi.</p>
+        </div>
+        <div class="tech-card">
+            <div class="tech-icon"><i class="fas fa-bolt"></i></div>
+            <h3>Akıllı Holter</h3>
+            <p style="font-size: 0.9rem; color: var(--muted)">7 güne kadar uzman destekli ritim kaydı.</p>
+        </div>
+        <div class="tech-card">
+            <div class="tech-icon"><i class="fas fa-stethoscope"></i></div>
+            <h3>IVUS / OCT</h3>
+            <p style="font-size: 0.9rem; color: var(--muted)">Damar içi mikroskobik görüntüleme sistemleri.</p>
+        </div>
+        <div class="tech-card">
+            <div class="tech-icon"><i class="fas fa-heart"></i></div>
+            <h3>Tansiyon Takip</h3>
+            <p style="font-size: 0.9rem; color: var(--muted)">24 saatlik hassas ambulatuar ölçüm.</p>
+        </div>
+    </div>
+</section>
+</section> <br>
+
+
+<section class="container section-padding">
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h2 style="font-size: 2.2rem;">Hasta Deneyimi Rehberi</h2>
+        <p style="color: var(--muted)">Kliniğimizi ziyaret etmeden önce bilmeniz gerekenler.</p>
+    </div>
+
+    <div class="info-box-grid">
+        <div class="clean-box">
+            <span class="box-tag">Ziyaret Akışı</span>
+            <h3>Sizi Neler Bekliyor?</h3>
+            <ul class="step-list">
+                <li><span class="step-number">1</span> Güler yüzlü karşılama ve kayıt.</li>
+                <li><span class="step-number">2</span> Bekleme yapmadan muayene odasına geçiş.</li>
+                <li><span class="step-number">3</span> Detaylı dijital tetkikler ve analiz.</li>
+                <li><span class="step-number">4</span> Dr. Emre Mengi ile sonuç değerlendirme.</li>
+            </ul>
+        </div>
+
+        <div class="clean-box">
+            <span class="box-tag">Konfor & Ulaşım</span>
+            <h3>Klinik İmkanları</h3>
+            <div style="margin-top: 20px;">
+                <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 15px;">
+                    <i class="fas fa-parking" style="color: var(--cardio); margin-right: 10px;"></i> Ücretsiz Kolay Otopark
+                </p>
+                <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 15px;">
+                    <i class="fas fa-wheelchair" style="color: var(--cardio); margin-right: 10px;"></i> Engelli Erişimine Uygun Giriş
+                </p>
+                <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 15px;">
+                    <i class="fas fa-wifi" style="color: var(--cardio); margin-right: 10px;"></i> Misafir Wi-Fi Ağı
+                </p>
+                <p style="font-size: 0.95rem; color: var(--muted);">
+                    <i class="fas fa-coffee" style="color: var(--cardio); margin-right: 10px;"></i> Sıcak/Soğuk İkram Servisi
+                </p>
+            </div>
+        </div>
+
+        <div class="clean-box" style="background: var(--cardio); color: white;">
+            <span class="box-tag" style="background: rgba(255,255,255,0.2); color: white;">Hasta Görüşü</span>
+            <h3 style="color: white;">"Kendimi Güvende Hissettim"</h3>
+            <p style="font-style: italic; margin-top: 15px; font-size: 1rem; opacity: 0.9;">
+                "Klinikten içeri girdiğiniz an hastane soğukluğunu değil, bir huzur ortamını hissediyorsunuz. Emre Bey'in ilgisi, çalışanların nezaketi ve teknolojik donanım gerçekten çok hoşuma gitti."
+            </p>
+            <p style="margin-top: 20px; font-weight: 600; font-size: 0.9rem;">— Ahmet Y. (Ocak 2026)</p>
+        </div>
+    </div>
+
+
+</section> <br>
+
+
+<br>
+<section class="container section-padding">
+    
+</section>
+
+<br>
+
+
+
+<!-- 
+<section class="container section-padding">
+    <div style="text-align: center; margin-bottom: 70px;">
+        <h2 style="font-size: 2.5rem;">Hekimimiz & Ekibimiz</h2>
+    </div>
+    
+    <div class="staff-layout">
+        <div class="doctor-hero-card">
+            <img src="doctor2.jpg" class="doctor-photo" alt="Dr. Emre Mengi">
+            <div>
+    <span style="color: var(--cardio); font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; text-transform: uppercase;">Uzm. Dr.</span>
+    <h2 style="font-size: 3rem; margin-bottom: 15px; font-weight: 800; letter-spacing: -1px;">Emre Mengi</h2>
+    <p style="color: var(--muted); font-size: 1.1rem; line-height: 1.7; margin-bottom: 35px; max-width: 600px;">
+        Kardiyoloji alanında 15 yılı aşkın tecrübesiyle, binlerce başarılı girişimsel işleme imza atmış olan Dr. Mengi, hastalarına en güncel tedavi protokollerini sunmaktadır.
+    </p>
+
+    <div class="credentials-wrapper">
+        <div class="info-glass-card">
+            <div class="icon-circle">🎓</div>
+            <div class="info-content">
+                <h3>Eğitim</h3>
+                <div class="info-item">
+                    <span class="year">2005 - Hacettepe Üniversitesi Tıp Fakültesi</span>
+                </div>
+                <div class="info-item">
+                    <span class="year">2010 - Ankara Şehir Hastanesi (Uzmanlık)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-glass-card">
+            <div class="icon-circle">💼</div>
+            <div class="info-content">
+                <h3>Deneyim</h3>
+                <div class="info-item">
+                    <span class="year">Mayıs 2025 — Günümüz</span>
+                    <p>Emre Mengi Kalp ve Damar Hastalıkları Muayenehanesi, Uzman Kardiyolog</p>
+                </div>
+                <div class="info-item">
+                    <span class="year">2010 — 2015</span>
+                    <p>Memorial Sağlık Grubu</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+
+       <div class="assistants-grid">
+    <div class="assistant-card">
+        <img src="https://placehold.co/200x200/e0e0e0/666666?text=Foto" class="assistant-photo" alt="Evren Keskin">
+        <div>
+            <h4 style="margin:0">Evren Keskin</h4>
+            <p style="font-size: 0.8rem; color: var(--cardio); font-weight: 600; margin:0;">Klinik Yazılım Sorumlusu</p>
+        </div>
+    </div>
+
+    <div class="assistant-card">
+        <img src="https://placehold.co/200x200/e0e0e0/666666?text=Foto" class="assistant-photo" alt="Personel">
+        <div>
+            <h4 style="margin:0">İsim Soyisim</h4>
+            <p style="font-size: 0.8rem; color: var(--cardio); font-weight: 600; margin:0;">Hemşire</p>
+        </div>
+    </div>
+</div> <br>
+        </div>
+    </div>
+</section> -->
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <a href="#" class="footer-logo">Dr. EMRE <span>MENGİ</span></a>
+                <p class="footer-about">Kardiyoloji Uzmanı olarak, modern tıbbın tüm imkanlarını hasta odaklı yaklaşımla birleştiriyor, sağlıklı bir gelecek için profesyonel çözümler sunuyorum.</p>
+                <div class="social-row">
+                    <a href="https://www.instagram.com/dremremengi/" class="social-btn" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://www.linkedin.com/in/emre-mengi-501077180" class="social-btn" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-linkedin-in"></i>
+</a>
+                    <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="footer-head">Hizmetler</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Koroner Anjiyografi</a></li>
+                    <li><a href="#">Ritim Bozuklukları</a></li>
+                    <li><a href="#">Kalp Yetmezliği Takibi</a></li>
+                    <li><a href="#">Hipertansiyon Yönetimi</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-head">Kurumsal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Hakkımda</a></li>
+                    <li><a href="#">Blog Yazıları</a></li>
+                    <li><a href="#">Klinik Turu</a></li>
+                    <li><a href="#">Sıkça Sorulan Sorular</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-head">İletişim</h4>
+                <ul class="footer-links" style="color: var(--muted); font-size: 0.95rem;">
+                    <li><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--cardio);"></i> Atatürk Mahallesi<br>Aliağa, İzmir</li>
+                    <li><i class="fas fa-phone" style="margin-right: 10px; color: var(--cardio);"></i>0540 119 35 35</li>
+                    <li><i class="fas fa-envelope" style="margin-right: 10px; color: var(--cardio);"></i> emremengi.dr@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Uzm. Dr. Emre Mengi. Tüm hakları saklıdır.</p>
+            <div style="display:flex; gap: 20px;">
+                <a href="#" style="text-decoration:none; color:var(--muted);">KVKK Aydınlatma Metni</a>
+                <a href="#" style="text-decoration:none; color:var(--muted);">Gizlilik Politikası</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Waiting Room Auto Slider
+let currentSlide = 0;
+// Change this line to select the .slide divs instead of just imgs
+const slides = document.querySelectorAll('.slide'); 
+const dots = document.querySelectorAll('.dot');
+const track = document.getElementById('slider-track');
+
+function updateSlider() {
+    track.style.transform = `translateX(-${currentSlide * (100 / slides.length)}%)`;
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+    });
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSlider();
+}
+
+function jumpToSlide(index) {
+    currentSlide = index;
+    updateSlider();
+    resetTimer();
+}
+
+let sliderInterval = setInterval(nextSlide, 4000);
+
+function resetTimer() {
+    clearInterval(sliderInterval);
+    sliderInterval = setInterval(nextSlide, 4000);
+}
+</script>
+
+</body>
+</html>

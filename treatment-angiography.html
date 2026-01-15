@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Koroner Anjiyografi | Dr. Emre Mengi</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+@import url('style.css');
+
+/* Hero */
+.treatment-hero {
+  padding: 80px 20px 40px;
+  text-align: center;
+  background: #f9f9f9;
+}
+.treatment-hero h1 { font-size: 3rem; margin: 20px 0; color: var(--cardio); }
+.treatment-hero p { font-size: 1.1rem; max-width: 800px; margin: 0 auto; color: var(--muted); }
+
+/* Treatment Blog Layout */
+.treatment-blog {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 50px;
+  max-width: 1600px;
+  margin: 60px auto 100px;
+  align-items: flex-start;
+  padding: 0 20px;
+}
+
+.treatment-image {
+  flex: 0 0 550px;   /* slightly wider image */
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.treatment-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.treatment-content {
+  flex: 1 1 auto;    /* content takes full remaining width */
+}
+
+.treatment-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  color: var(--cardio);
+}
+
+.treatment-content h3 {
+  font-size: 1.8rem;
+  margin-top: 35px;
+  margin-bottom: 15px;
+  color: var(--cardio);
+}
+
+.treatment-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.treatment-content ul {
+  margin: 20px 0;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.treatment-content li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .treatment-blog {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .treatment-image {
+    width: 100%;
+    height: 300px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+
+<nav id="nav">
+  <div class="container nav-row">
+    <a href="index.html" class="logo">
+      <img src="logo.jpg" alt="Uzman Dr. EMRE MENGİ" style="height: 80px; width: auto; margin-top: 10px;">
+    </a>
+
+    <ul class="nav-links">
+      <li class="nav-item"><a href="why-me.html">Neden Emre Mengi?</a></li>
+      <li class="nav-item">
+        <a href="treatments.html">Tedaviler & Hizmetler</a>
+        <div class="mega-menu">
+          <a href="#" class="sub-link-nav"><strong>Kardiyoloji Muayene Takibi</strong><span>Detaylı Analiz ve Tarama.</span></a>
+          <a href="#" class="sub-link-nav"><strong>Tansiyon Holter</strong><span>Kalp Ritim Bozukluğu.</span></a>
+          <a href="#" class="sub-link-nav"><strong>Koroner Anjiyografi</strong><span>Damar Tıkanıklığı.</span></a>
+          <a href="#" class="sub-link-nav"><strong>Ekokardiyografi</strong><span>Radyasyonsuz Kalp Muayenesi</span></a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="tour.html">Klinik Turu</a></li>
+      <li class="nav-item"><a href="blog.html">Sağlık Rehberi</a></li>
+      <li class="nav-item"><a href="contact.html">İletişim</a></li>
+    </ul>
+
+    <div class="nav-right-group">
+
+      <div class="nav-contact-container">
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <div class="contact-text">
+            <span class="contact-label">Hemen Arayın</span>
+            <span class="contact-value">0540 119 35 35</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <div class="contact-text">
+            <span class="contact-label">Hafta İçi</span>
+            <span class="contact-value">10:00 - 19:00</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <div class="contact-text">
+            <span class="contact-label">Cumartesi</span>
+            <span class="contact-value">10:00 - 16:00</span>
+          </div>
+        </div>
+      </div>
+    </div> </div>
+</nav>
+
+<!-- Hero -->
+<header class="treatment-hero" style="margin-top: 2rem;">
+  <span style="color: var(--cardio); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">Tedavi Detayı</span>
+  <h1>Koroner Anjiyografi ve Stent</h1>
+  <p>Kalp damarlarındaki tıkanıklıkları yüksek çözünürlüklü görüntüleme ile tespit ediyor, gerekli durumlarda ilaç salınımlı stentler ile damar açıklığını sağlıyoruz.</p>
+</header>
+
+<!-- Treatment Content -->
+<section class="treatment-blog">
+  <div class="treatment-image">
+    <img src="treatment-coroner-angiography.jpg" alt="Koroner Anjiyografi">
+  </div>
+  <div class="treatment-content">
+    <h2>Hakkında</h2>
+    <p>Koroner anjiyografi, kalp damarlarını detaylı olarak inceleyen ve daralma veya tıkanıklıkları güvenle tespit eden altın standart tanı yöntemidir. İşlem minimal invazivdir ve çoğu hasta için lokal anestezi ile uygulanır. Bu sayede hasta konforu ve güvenliği ön plandadır.</p>
+
+    <h3>İşlem Süreci</h3>
+    <p>Genellikle aynı gün taburcu olabilirsiniz. İşlem sırasında deneyimli kardiyologlar sürekli iletişimde olur ve işlem öncesi ile sonrası kişiye özel takip sağlanır.</p>
+    <ul>
+      <li>Kasıktan veya bilekten küçük bir giriş ile damar yolundan işlem yapılır.</li>
+      <li>Radyolojik görüntüleme sayesinde kalp damarları detaylı incelenir ve tıkanıklıklar doğru şekilde belirlenir.</li>
+      <li>İyileşme süresi kısadır, çoğu hasta aynı gün evine dönebilir.</li>
+    </ul>
+
+    <h3>Kimler İçin Uygun?</h3>
+    <p>Bu işlem, göğüs ağrısı, nefes darlığı veya baskı hissi yaşayan hastalar ile kalp krizi riski yüksek bireyler için uygundur. Ayrıca kalp damar hastalığı şüphesi olan kişiler ve daha önce stent veya bypass uygulanmış hastaların kontrolü için de kullanılır.</p>
+    <ul>
+      <li>Göğüs ağrısı, nefes darlığı veya baskı hissi olan hastalar</li>
+      <li>Kalp krizi riski yüksek kişiler</li>
+      <li>Kalp damar hastalığı şüphesi olan kişiler</li>
+      <li>Stent veya bypass sonrası kontroller</li>
+    </ul>
+
+    <h3>Faydaları</h3>
+    <p>Koroner anjiyografi, damar sorunlarını hızlı ve güvenli bir şekilde tespit eder. Minimal invaziv yöntem sayesinde kısa iyileşme süresi ve düşük komplikasyon riski sağlar. İşlem sonrası kişiye özel takip ile güvenlik üst düzeyde sağlanır ve tüm adımlar uzman kardiyolog kontrolünde yürütülür.</p>
+    <ul>
+      <li>Daralmış veya tıkanmış damarların hızlı ve güvenli tespiti</li>
+      <li>Kısa iyileşme süresi ve düşük komplikasyon riski</li>
+      <li>İşlem sonrası kişiye özel takip ile güvenlik sağlanır</li>
+      <li>Uzman kardiyolog kontrolünde her adım yürütülür</li>
+    </ul>
+
+    <h3>Önlemler ve Bilinmesi Gerekenler</h3>
+    <p>İşlem öncesinde kan testleri ve kardiyak değerlendirme yapılır. Kullandığınız ilaçlar ve olası alerjiler mutlaka doktor ile paylaşılmalıdır. İşlem sonrası hafif rahatsızlıklar normaldir, ancak ciddi bir durum ortaya çıkarsa acilen bildirilmelidir.</p>
+    <ul>
+      <li>İşlem öncesi gerekli kan testleri ve değerlendirme yapılır</li>
+      <li>Kullandığınız ilaçlar ve alerjiler doktor ile paylaşılmalı</li>
+      <li>Hafif rahatsızlıklar normaldir</li>
+      <li>Ciddi durumlarda acil bildirim yapılmalı</li>
+    </ul>
+  </div>
+</section>
+
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <a href="#" class="footer-logo">Dr. EMRE <span>MENGİ</span></a>
+                <p class="footer-about">Kardiyoloji Uzmanı olarak, modern tıbbın tüm imkanlarını hasta odaklı yaklaşımla birleştiriyor, sağlıklı bir gelecek için profesyonel çözümler sunuyorum.</p>
+                <div class="social-row">
+                    <a href="https://www.instagram.com/dremremengi/" class="social-btn" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://www.linkedin.com/in/emre-mengi-501077180" class="social-btn" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-linkedin-in"></i>
+</a>
+                    <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="footer-head">Hizmetler</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Koroner Anjiyografi</a></li>
+                    <li><a href="#">Ritim Bozuklukları</a></li>
+                    <li><a href="#">Kalp Yetmezliği Takibi</a></li>
+                    <li><a href="#">Hipertansiyon Yönetimi</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-head">Kurumsal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Hakkımda</a></li>
+                    <li><a href="#">Blog Yazıları</a></li>
+                    <li><a href="#">Klinik Turu</a></li>
+                    <li><a href="#">Sıkça Sorulan Sorular</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-head">İletişim</h4>
+                <ul class="footer-links" style="color: var(--muted); font-size: 0.95rem;">
+                    <li><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--cardio);"></i> Atatürk Mahallesi<br>Aliağa, İzmir</li>
+                    <li><i class="fas fa-phone" style="margin-right: 10px; color: var(--cardio);"></i>0540 119 35 35</li>
+                    <li><i class="fas fa-envelope" style="margin-right: 10px; color: var(--cardio);"></i> emremengi.dr@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Uzm. Dr. Emre Mengi. Tüm hakları saklıdır.</p>
+            <div style="display:flex; gap: 20px;">
+                <a href="#" style="text-decoration:none; color:var(--muted);">KVKK Aydınlatma Metni</a>
+                <a href="#" style="text-decoration:none; color:var(--muted);">Gizlilik Politikası</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+});
+</script>
+</body>
+</html>

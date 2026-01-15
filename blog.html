@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalp Sağlığı Rehberi | Dr. Emre Mengi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+@import url('style.css');
+        /* ── BLOG HERO ── */
+        .blog-header { padding: 140px 0 80px; background: var(--panel); text-align: center; border-bottom: 1px solid var(--border); }
+        .blog-header h1 { font-size: 3.5rem; letter-spacing: -0.04em; margin-bottom: 15px; font-weight: 800; }
+        .blog-header h1 span { color: var(--cardio); }
+        .blog-header p { color: var(--muted); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+
+        /* ── SEARCH BOX ── */
+        .search-container { max-width: 550px; margin: 40px auto 0; position: relative; }
+        .search-container i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+        .search-container input { 
+            width: 100%; padding: 18px 25px 18px 55px; border-radius: 20px; 
+            border: 1px solid var(--border); font-size: 1rem; outline: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03); transition: 0.3s;
+        }
+        .search-container input:focus { border-color: var(--cardio); box-shadow: 0 10px 25px rgba(225,29,72,0.1); }
+
+        /* ── CATEGORY PILLS ── */
+        .category-pills { display: flex; justify-content: center; gap: 12px; margin-top: 35px; flex-wrap: wrap; }
+        .pill { 
+            padding: 10px 24px; border-radius: 50px; background: white; 
+            border: 1px solid var(--border); cursor: pointer; font-size: 0.9rem; 
+            font-weight: 600; transition: 0.3s; color: var(--ink);
+        }
+        .pill:hover { border-color: var(--cardio); color: var(--cardio); }
+        .pill.active { background: var(--cardio); color: white; border-color: var(--cardio); box-shadow: 0 10px 20px rgba(225,29,72,0.2); }
+
+        /* ── FEATURED POST ── */
+        .featured-section { padding: 80px 0 40px; }
+        .featured-card {
+            display: grid; grid-template-columns: 1.2fr 0.8fr; background: white; 
+            border-radius: 40px; overflow: hidden; border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg); transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
+            text-decoration: none; color: inherit;
+        }
+        .featured-card:hover { transform: translateY(-12px); box-shadow: var(--shadow-hover); }
+        .featured-img { width: 100%; height: 550px; object-fit: cover; transition: 0.5s; }
+        .featured-card:hover .featured-img { scale: 1.03; }
+        .featured-content { padding: 80px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+        .featured-content h2 { font-size: 2.8rem; line-height: 1.1; margin-bottom: 25px; letter-spacing: -0.02em; }
+
+        /* ── BLOG GRID ── */
+        .blog-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); 
+            gap: 50px; 
+            padding: 40px 0 100px; 
+        }
+        .post-card { 
+            background: white; border-radius: 32px; border: 1px solid var(--border); 
+            overflow: hidden; transition: 0.4s; text-decoration: none; color: inherit; 
+            display: flex; flex-direction: column; height: 100%;
+        }
+        .post-card.hidden { display: none; }
+        .post-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); border-color: var(--cardio); }
+        .post-img-box { width: 100%; height: 280px; overflow: hidden; }
+        .post-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
+        .post-card:hover .post-img-box img { transform: scale(1.1); }
+        .post-body { padding: 35px; flex-grow: 1; display: flex; flex-direction: column; }
+        .post-body h3 { font-size: 1.5rem; margin-bottom: 15px; line-height: 1.3; font-weight: 700; }
+        .post-body p { color: var(--muted); margin-bottom: 20px; font-size: 1rem; flex-grow: 1; }
+        
+        .badge { 
+            display: inline-block; padding: 6px 16px; background: var(--cardio-soft); 
+            color: var(--cardio); border-radius: 10px; font-weight: 800; 
+            font-size: 0.75rem; margin-bottom: 20px; text-transform: uppercase; width: fit-content;
+        }
+
+        /* ── NEWSLETTER ── */
+        .newsletter { 
+            background: var(--ink); padding: 100px 60px; border-radius: 50px; 
+            color: white; margin-bottom: 100px; text-align: center;
+            background-image: radial-gradient(circle at top right, #334155, #1e293b);
+        }
+        .newsletter h2 { font-size: 2.8rem; margin-bottom: 20px; letter-spacing: -0.03em; }
+        .newsletter p { opacity: 0.7; font-size: 1.2rem; margin-bottom: 40px; }
+        .newsletter-form { display: flex; justify-content: center; gap: 15px; max-width: 600px; margin: 0 auto; }
+        .newsletter input { 
+            padding: 20px 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); 
+            width: 100%; font-size: 1rem; background: rgba(255,255,255,0.05); color: white;
+        }
+        .newsletter input:focus { background: rgba(255,255,255,0.1); outline: none; border-color: var(--cardio); }       
+    </style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container nav-row">
+    <a href="index.html" class="logo">
+      <img src="logo.jpg" alt="Uzman Dr. EMRE MENGİ" style="height: 80px; width: auto; margin-top: 10px;">
+    </a>
+
+    <ul class="nav-links">
+        <li class="nav-item"><a href="tour.html">Neden Emre Mengi?</a></li>
+      <li class="nav-item">
+        <a href="treatments.html">Tedaviler & Hizmetler</a>
+        <div class="mega-menu">
+          <a href="#" class="sub-link-nav"><strong>Kardiyoloji Muayene Takibi</strong><span>Detaylı Analiz ve Tarama.</span></a>
+          <a href="#" class="sub-link-nav"><strong>Tansiyon Holter</strong><span>Kalp Ritim Bozukluğu.</span></a>
+          <a href="#" class="sub-link-nav"><strong>Koroner Anjiyografi</strong><span>Damar Tıkanıklığı.</span></a>
+          <a href="#" class="sub-link-nav"><strong>Ekokardiyografi</strong><span>Radyasyonsuz Kalp Muayenesi</span></a>
+        </div>
+      </li>
+        <li class="nav-item"><a href="tour.html">Klinik Turu</a></li>
+            <li class="nav-item"><a href="blog.html" style="color: var(--cardio); font-weight: 700;">Sağlık Rehberi</a></li>
+      <li class="nav-item"><a href="contact.html">İletişim</a></li>
+    </ul>
+
+    <div class="nav-right-group">
+
+      <div class="nav-contact-container">
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <div class="contact-text">
+            <span class="contact-label">Hemen Arayın</span>
+            <span class="contact-value">0540 119 35 35</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <div class="contact-text">
+            <span class="contact-label">Hafta İçi</span>
+            <span class="contact-value">10:00 - 19:00</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <div class="contact-text">
+            <span class="contact-label">Cumartesi</span>
+            <span class="contact-value">10:00 - 16:00</span>
+          </div>
+        </div>
+      </div>
+    </div> </div>
+</nav>
+
+
+<header class="blog-header">
+    <div class="container">
+        <span class="badge">Kardiyoloji Arşivi</span>
+        <h1>Kalp Sağlığı <span>Bilgi</span> Bankası</h1>
+        <p>Dr. Emre Mengi'nin klinik tecrübeleriyle hazırlanan, hastalar için rehber niteliğinde güncel makaleler.</p>
+        
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" id="blogSearch" placeholder="Belirti, tedavi veya makale arayın...">
+        </div>
+
+        <div class="category-pills">
+            <div class="pill active" data-filter="all">Tüm Yazılar</div>
+            <div class="pill" data-filter="hastalik">Kalp Hastalıkları</div>
+            <div class="pill" data-filter="tedavi">Girişimsel Kardiyoloji</div>
+            <div class="pill" data-filter="yasam">Yaşam & Diyet</div>
+            <div class="pill" data-filter="teknoloji">Modern Teknoloji</div>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section class="blog-grid" id="blogGrid" style="padding-top: 80px;">
+        <a href="blog-kan-sulandiricilar.html" class="post-card" data-category="tedavi" data-title="Kan Sulandırıcılar: Kullanım ve Tercih">
+            <div class="post-img-box"><img src="blog-kan-sulandiricilar.jpg" alt="Kan Sulandırıcılar"></div>
+            <div class="post-body">
+                <span class="badge">Girişimsel Kardiyoloji</span>
+                <h3>Kan Sulandırıcılar: Kullanım ve Tercih</h3>
+                <p>Damar tıkanıklığı tedavisinde kullanılan yeni nesil ilaçlar ve platformlar hakkında en çok sorulan sorular.</p>
+                <span style="font-size: 0.85rem; color: var(--cardio); font-weight: 700;">Yazıyı İncele →</span>
+            </div>
+        </a>
+
+        <a href="blog-genc-yasta-hipertansiyon.html" class="post-card" data-category="hastalik" data-title="Sessiz Tehlike: Genç Yaşta Görülen Hipertansiyon">
+            <div class="post-img-box"><img src="blog-2.jpg" alt="Tansiyon"></div>
+            <div class="post-body">
+                <span class="badge">Kalp Hastalıkları</span>
+                <h3>Sessiz Tehlike: Genç Yaşta Hipertansiyon</h3>
+                <p>Modern yaşamın getirdiği stres ve beslenme hatalarının genç kalpler üzerindeki etkisi.</p>
+                <span style="font-size: 0.85rem; color: var(--cardio); font-weight: 700;">Devamını Oku →</span>
+            </div>
+        </a>
+    </section>
+
+    </main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <a href="#" class="footer-logo">Dr. EMRE <span>MENGİ</span></a>
+                <p class="footer-about">Kardiyoloji Uzmanı olarak, modern tıbbın tüm imkanlarını hasta odaklı yaklaşımla birleştiriyor, sağlıklı bir gelecek için profesyonel çözümler sunuyorum.</p>
+                <div class="social-row">
+                    <a href="https://www.instagram.com/dremremengi/" class="social-btn" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://www.linkedin.com/in/emre-mengi-501077180" class="social-btn" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-linkedin-in"></i>
+</a>
+                    <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="footer-head">Hizmetler</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Koroner Anjiyografi</a></li>
+                    <li><a href="#">Ritim Bozuklukları</a></li>
+                    <li><a href="#">Kalp Yetmezliği Takibi</a></li>
+                    <li><a href="#">Hipertansiyon Yönetimi</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-head">Kurumsal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Hakkımda</a></li>
+                    <li><a href="#">Blog Yazıları</a></li>
+                    <li><a href="#">Klinik Turu</a></li>
+                    <li><a href="#">Sıkça Sorulan Sorular</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-head">İletişim</h4>
+                <ul class="footer-links" style="color: var(--muted); font-size: 0.95rem;">
+                    <li><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--cardio);"></i> Atatürk Mahallesi<br>Aliağa, İzmir</li>
+                    <li><i class="fas fa-phone" style="margin-right: 10px; color: var(--cardio);"></i>0540 119 35 35</li>
+                    <li><i class="fas fa-envelope" style="margin-right: 10px; color: var(--cardio);"></i> emremengi.dr@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Uzm. Dr. Emre Mengi. Tüm hakları saklıdır.</p>
+            <div style="display:flex; gap: 20px;">
+                <a href="#" style="text-decoration:none; color:var(--muted);">KVKK Aydınlatma Metni</a>
+                <a href="#" style="text-decoration:none; color:var(--muted);">Gizlilik Politikası</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+
+    // UPDATED SEARCH & FILTER LOGIC
+    const searchInput = document.getElementById('blogSearch');
+    const pills = document.querySelectorAll('.pill');
+    const posts = document.querySelectorAll('.post-card');
+
+    function performSearchAndFilter() {
+        const query = searchInput.value.toLowerCase();
+        const activeCategory = document.querySelector('.pill.active').dataset.filter;
+
+        posts.forEach(post => {
+            const title = post.dataset.title.toLowerCase();
+            const category = post.dataset.category;
+            
+            const matchesSearch = title.includes(query);
+            const matchesFilter = activeCategory === 'all' || category === activeCategory;
+
+            if (matchesSearch && matchesFilter) {
+                post.classList.remove('hidden');
+                post.style.display = "flex"; // Ensure visibility
+            } else {
+                post.classList.add('hidden');
+                post.style.display = "none";
+            }
+        });
+    }
+
+    pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            pills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            performSearchAndFilter();
+        });
+    });
+
+    searchInput.addEventListener('input', performSearchAndFilter);
+</script>
+
+</body>
+</html>

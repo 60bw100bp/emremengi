@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neden Dr. Emre Mengi? | Uzm. Kardiyoloji</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+@import url('style.css');
+
+/* ── NAV & MEGA MENU (Identical to Treatments) ── */
+
+.nav-item:hover .mega-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.sub-link {
+  padding: 16px; border: 1px solid var(--border); border-radius: 12px;
+  text-decoration: none; color: var(--ink); transition: 0.2s; text-align: left;
+  display: block;
+}
+.sub-link:hover { border-color: var(--cardio); background: var(--cardio-soft); }
+.sub-link strong { display: block; font-size: 0.9rem; color: var(--cardio); margin-bottom: 4px; }
+.sub-link span { font-size: 0.8rem; color: var(--muted); line-height: 1.2; display: block; }
+
+/* ── WHY ME SPECIFIC STYLES ── */
+.philosophy-section {
+    padding: 100px 0;
+    background: white;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.intro-image-stack {
+    position: relative;
+    height: 550px;
+}
+
+.main-img {
+    width: 85%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 40px;
+    box-shadow: var(--shadow-lg);
+    z-index: 2;
+    position: relative;
+}
+
+.accent-box {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60%;
+    height: 60%;
+    background: var(--cardio-soft);
+    border-radius: 40px;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    padding: 30px;
+}
+
+.accent-box h4 { color: var(--cardio); font-size: 1.5rem; line-height: 1.2; }
+
+/* ── VALUE CARDS ── */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.value-card {
+    padding: 40px;
+    background: var(--bg);
+    border-radius: 30px;
+    border: 1px solid var(--border);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.value-card:hover {
+    transform: translateY(-15px);
+    border-color: var(--cardio);
+    box-shadow: var(--shadow-hover);
+}
+
+.value-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--cardio-soft);
+    color: var(--cardio);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+}
+
+/* ── SINCERE QUOTE ── */
+.quote-section {
+    background: var(--ink);
+    padding: 120px 0;
+    color: white;
+    text-align: center;
+    border-radius: 60px;
+    margin: 40px;
+}
+
+.quote-content { max-width: 800px; margin: 0 auto; }
+.quote-content i { font-size: 3rem; color: var(--cardio); margin-bottom: 30px; opacity: 0.5; }
+.quote-content h2 { font-size: 2.5rem; font-weight: 400; font-style: italic; line-height: 1.4; }
+.quote-content p { margin-top: 30px; font-weight: 700; color: var(--cardio); letter-spacing: 2px; text-transform: uppercase; }
+
+/* Animations */
+.reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1100px) {
+    .intro-grid, .values-grid { grid-template-columns: 1fr; }
+    .intro-image-stack { height: 400px; }
+    .quote-section { margin: 20px; padding: 60px 20px; }
+}
+
+/* DEVAM */
+
+    
+
+    .subtitle {
+        font-size: 1.28rem;
+        color: var(--muted);
+        max-width: 720px;
+        margin: 0 auto 4rem;
+        text-align: center;
+    }
+
+    /* ── BIO SECTION  */
+    .bio-wrapper {
+        display: flex;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .bio-image {
+        flex: 1;
+        max-width: 480px;
+        border-radius: 32px;
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .bio-image:hover {
+        transform: scale(1.04) rotate(2deg);
+    }
+
+    .bio-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .bio-content {
+        flex: 1.5;
+    }
+
+    .bio-content p {
+        font-size: 1.12rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* ── EXPERTISE SECTION ───────────────────────────────── */
+    .expertise-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 32px;
+    }
+
+    .expertise-card {
+        background: white;
+        border-radius: 24px;
+        padding: 32px;
+        box-shadow: var(--shadow-md);
+        transition: all 0.5s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .expertise-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--cardio);
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+    }
+
+    .expertise-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .expertise-card:hover {
+        box-shadow: var(--shadow-lg);
+    }
+
+    .expertise-icon {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 20px;
+        display: block;
+        transition: color 0.4s, transform 0.4s;
+    }
+
+    .expertise-card:hover .expertise-icon {
+        color: var(--cardio);
+        transform: translateY(-5px);
+    }
+
+    .expertise-card h3 {
+        font-size: 1.6rem;
+        margin-bottom: 12px;
+    }
+
+    .expertise-card p {
+        color: var(--muted);
+    }
+
+    /* ── WHY SECTION ─────────────────────────────────────── */
+    .why-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 28px;
+    }
+
+    .why-card {
+        background: white;
+        border-radius: 24px;
+        padding: 40px 32px;
+        box-shadow: var(--shadow-md);
+        transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .why-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(230,240,255,0.4), transparent);
+        opacity: 0;
+        transition: opacity 0.6s ease;
+    }
+
+    .why-card:hover {
+        transform: translateY(-14px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .why-card:hover::before {
+        opacity: 1;
+    }
+
+    .why-icon-wrapper {
+        width: 78px;
+        height: 78px;
+        background: rgba(230,240,255,0.6);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 28px;
+        transition: all 0.5s ease;
+    }
+
+    .why-card:hover .why-icon-wrapper {
+        background: var(--primary);
+        transform: scale(1.12);
+    }
+
+    .why-icon {
+        font-size: 2.1rem;
+        color: var(--primary);
+        transition: color 0.4s;
+    }
+
+    .why-card:hover .why-icon {
+        color: white;
+    }
+
+    .why-card h3 {
+        font-size: 1.65rem;
+        margin-bottom: 14px;
+    }
+
+    .why-card p {
+        color: var(--muted);
+        font-size: 1.05rem;
+    }
+
+    /* ── PATIENT DATA SECTION ────────────────────────────── */
+    .patient-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 24px;
+        margin-bottom: 60px;
+    }
+
+    .stat-card {
+        background: white;
+        border-radius: 20px;
+        padding: 28px;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .stat-card:hover {
+        transform: scale(1.05);
+        box-shadow: var(--shadow-md);
+    }
+
+    .stat-number {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--cardio);
+        margin-bottom: 8px;
+    }
+
+    .stat-label {
+        font-size: 1.1rem;
+        color: var(--muted);
+    }
+
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+    }
+
+    .testimonial-card {
+        background: white;
+        border-radius: 24px;
+        padding: 32px;
+        box-shadow: var(--shadow-md);
+        position: relative;
+        transition: all 0.4s ease;
+    }
+
+    .testimonial-card:hover {
+        box-shadow: var(--shadow-lg);
+    }
+
+    .testimonial-quote {
+        font-size: 1.1rem;
+        color: var(--dark);
+        margin-bottom: 20px;
+        font-style: italic;
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .author-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--light);
+    }
+
+    .author-name {
+        font-weight: 600;
+    }
+
+    .author-role {
+        color: var(--muted);
+        font-size: 0.95rem;
+    }
+
+    /* ── REVEAL ANIMATION ────────────────────────────────── */
+    .reveal {
+        opacity: 0;
+        transform: translateY(45px);
+        transition: all 0.9s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Less but diverse: Only apply to sections, vary delays */
+    section .reveal:nth-child(1) { transition-delay: 0.2s; transition-duration: 0.8s; }
+    section .reveal:nth-child(2) { transition-delay: 0.4s; transition-duration: 1s; }
+    section .reveal:nth-child(3) { transition-delay: 0.6s; transition-duration: 1.2s; }
+
+
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        section { padding: 80px 0; }
+        h2 { font-size: 2.8rem; }
+        .bio-wrapper { flex-direction: column; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+        .nav-links { display: none; } /* Mobil menü için placeholder */
+        .bio-image { max-width: 100%; }
+        .footer-grid { grid-template-columns: 1fr; gap: 50px; text-align: center; }
+        .social-row { justify-content: center; }
+        .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+    }
+
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container nav-row">
+    <a href="index.html" class="logo">
+      <img src="logo.jpg" alt="Uzman Dr. EMRE MENGİ" style="height: 80px; width: auto; margin-top: 10px;">
+    </a>
+
+    <ul class="nav-links">
+      <li class="nav-item"><a href="why-me.html" style="color: var(--cardio); font-weight: 700;">Neden Emre Mengi?</a></li>
+      <li class="nav-item">
+        <a href="treatments.html">Tedaviler & Hizmetler</a>
+        <div class="mega-menu">
+          <a href="#" class="sub-link-nav"><strong>Kardiyoloji Muayene Takibi</strong><span>Detaylı Analiz ve Tarama.</span></a>
+          <a href="#" class="sub-link-nav"><strong>Tansiyon Holter</strong><span>Kalp Ritim Bozukluğu.</span></a>
+          <a href="#" class="sub-link-nav"><strong>Koroner Anjiyografi</strong><span>Damar Tıkanıklığı.</span></a>
+          <a href="#" class="sub-link-nav"><strong>Ekokardiyografi</strong><span>Radyasyonsuz Kalp Muayenesi</span></a>
+        </div>
+      </li>
+      <li class="nav-item"><a href="tour.html">Klinik Turu</a></li>
+      <li class="nav-item"><a href="blog.html">Sağlık Rehberi</a></li>
+      <li class="nav-item"><a href="contact.html">İletişim</a></li>
+    </ul>
+
+    <div class="nav-right-group">
+
+      <div class="nav-contact-container">
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <div class="contact-text">
+            <span class="contact-label">Hemen Arayın</span>
+            <span class="contact-value">0540 119 35 35</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <div class="contact-text">
+            <span class="contact-label">Hafta İçi</span>
+            <span class="contact-value">10:00 - 19:00</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <div class="contact-text">
+            <span class="contact-label">Cumartesi</span>
+            <span class="contact-value">10:00 - 16:00</span>
+          </div>
+        </div>
+      </div>
+    </div> </div>
+</nav>
+
+<header class="page-header" style="padding: 140px 0 100px; background: linear-gradient(135deg, #f8faff 0%, #e6f0ff 100%);">
+  <div class="container" style="display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 320px;">
+      <span style="color:var(--cardio); font-weight:700; text-transform:uppercase; letter-spacing:3px; font-size:1.1rem;">Neden Emre Mengi?</span>
+      <h1 style="font-size: 3.8rem; margin: 18px 0 24px; line-height: 1.05;">Dr. Emre Mengi<br>
+        <span style="color:var(--cardio); font-weight:600;">Kalbinizi Gerçekten Dinler</span>
+      </h1>
+      <p style="font-size: 1.32rem; color: #444; max-width: 580px; line-height: 1.45;">
+        Sadece hastalık değil, sizin yaşam kalitenizi tedavi ediyoruz. Güven, zaman ve samimiyet bizim temel farkımız.
+      </p>
+      <a href="treatments.html" class="btn btn-primary" style="margin-top: 28px; padding: 16px 40px; font-size: 1.15rem;">
+        Tedavileri İncele
+      </a>
+    </div>
+
+    <!-- Dikkat çekici doktor görseli -->
+    <div style="flex: 1; position: relative; max-width: 520px; margin: 0 auto;">
+      <img 
+        src="why-me.jpg" 
+        alt="Uzm. Dr. Emre Mengi" 
+style="width: 100%; 
+            height: 400px; 
+            object-fit: cover; 
+            object-position: center; 
+            border-radius: 32px; 
+            box-shadow: 0 30px 80px rgba(159,18,57,0.18); 
+            transform: rotate(1.5deg); 
+            transition: all 0.7s ease;"
+            onmouseover="this.style.transform='scale(1.04) rotate(0deg)';"
+            onmouseout="this.style.transform='scale(1) rotate(1.5deg)';"
+      >
+      <div style="
+        position: absolute; 
+        bottom: -24px; 
+        right: -24px; 
+        background: var(--cardio); 
+        color: white; 
+        padding: 16px 32px; 
+        border-radius: 16px; 
+        font-weight: 700; 
+        font-size: 1.4rem; 
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        transform: rotate(-2deg);
+
+      ">
+        <h1 style="line-height:1.05; margin:0;">
+
+  <span style="
+    display:block;
+    font-size:1.65rem;
+    font-weight:500;
+    letter-spacing:-0.4px;
+    color:#38bdf8; /* light sky blue */
+  ">
+    Girişimsel Kardiyoloji
+  </span>
+  <span style="
+    display:block;
+    margin-top:0.1rem;
+    font-size:0.95rem;
+    font-weight:400;
+    color:black;
+  ">
+    Uzman Dr. Emre Mengi
+  </span>
+</h1>
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── HASTA ODAKLI İSTATİSTİKLER ── (İlk scroll'da dikkat çeker) -->
+<section style="padding: 100px 0; background: white;">
+  <div class="container">
+    <h2 class="reveal">Hastalarımız Ne Diyor?</h2>
+    <div class="patient-stats" style="margin: 60px 0;">
+      <div class="stat-card reveal">
+        <div class="stat-number">+800</div>
+        <div class="stat-label">Takip Edilen Hasta</div>
+        <div style="opacity: 0.7;">*2025 hasta verisi baz alınmıştır.</div>
+      </div>
+      <div class="stat-card reveal" style="transition-delay:0.2s;">
+        <div class="stat-number">%100</div>
+        <div class="stat-label">Memnuniyet Oranı</div>
+      </div>
+      <div class="stat-card reveal" style="transition-delay:0.4s;">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Yıllık Deneyim</div>
+      </div>
+      <div class="stat-card reveal" style="transition-delay:0.6s;">
+        <div class="stat-number">7/24</div>
+        <div class="stat-label">Destek & Takip</div>
+      </div>
+    </div>
+    <p class="subtitle reveal" style="transition-delay:0.3s;">Sadece rakamlar değil, gerçek hikayeler ve sonuçlar konuşuyor</p>
+  </div>
+</section>
+
+<!-- ── GÜÇLÜ BİYOGRAFİ + FOTOĞRAF ── -->
+<section style="padding: 80px 0; background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);">
+  <div class="container">
+    <div class="bio-wrapper reveal">
+      <div class="bio-image">
+        <img src="doctor-sincere.jpg" alt="Dr. Emre Mengi samimi portre">
+      </div>
+      <div class="bio-content">
+        <h2>Bilim + Empati = <span>Gerçek İyileşme</span></h2>
+        <p>Her muayenede hastaya yeterli zaman ayırıyor, tanı ve tedavi sürecini birlikte planlıyoruz. Hiçbirş şeyi ezbere yapmıyoruz</p>
+        <p>Her muayenede ortalama <strong>25–45 dakika</strong> ayırıyor, sadece şikayetinizi değil, sizi dinliyoruz.</p>
+        
+        <ul class="feature-list" style="
+  margin-top:32px;
+  font-size:1.1rem;
+  line-height:2.1;
+  list-style:none;
+  padding-left:0;
+">
+  <li>
+  <i class="fas fa-check" style="color:var(--cardio); margin-right:12px;"></i>
+  Her hasta için ayrı değerlendirme ve tedavi planı
+</li>
+<li>
+  <i class="fas fa-check" style="color:var(--cardio); margin-right:12px;"></i>
+  Gerekli durumlarda ileri görüntüleme ve analiz
+</li>
+<li>
+  <i class="fas fa-check" style="color:var(--cardio); margin-right:12px;"></i>
+  Aile öyküsü olan kalp hastalıklarında deneyim
+</li>
+<li>
+  <i class="fas fa-check" style="color:var(--cardio); margin-right:12px;"></i>
+  Sürecin ve seçeneklerin açık şekilde anlatılması
+</li>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:120px 0;">
+  <div class="container" style="
+    display:grid;
+    grid-template-columns: 1fr 460px;
+    gap:72px;
+    align-items:start;
+  ">
+
+    <!-- LEFT : INFO -->
+    <div class="reveal">
+      <h2 style="
+        margin-bottom:20px;
+        font-size:2rem;
+        letter-spacing:-0.3px;
+      ">
+        Dr. Emre Mengi Kimdir?
+      </h2>
+
+      <p style="
+        font-size:1.05rem;
+        line-height:1.75;
+        color:#64748b;
+        max-width:620px;
+        margin-bottom:36px;
+      ">
+        Dr. Emre Mengi, girişimsel kardiyoloji uzmanıdır. Koroner damar hastalıklarında, özellikle stentleme ve tam tıkalı damar açma gibi ileri girişimler konusunda deneyimlidir. Hastalarına bütüncül ve kişiye özel samimi bir yaklaşım sunar.
+      </p>
+
+      <div style="
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap:28px 56px;
+      ">
+
+        <div>
+          <div style="
+            font-size:0.75rem;
+            letter-spacing:0.08em;
+            color:#94a3b8;
+            margin-bottom:6px;
+          ">
+            Eğtim
+          </div>
+          <div style="
+            font-size:0.95rem;
+            color:#0f172a;
+            line-height:1.5;
+          ">
+            Katip Çelebi Üniversitesi Tıp Fakülesi - Kardiyoloji Lisans (2009) <br>
+            Katip Çelebi Üniversitesi Tıp Fakülesi - Kardiyoloji Uzmanlık
+          </div>
+        </div>
+
+        <div>
+          <div style="
+            font-size:0.75rem;
+            letter-spacing:0.08em;
+            color:#94a3b8;
+            margin-bottom:6px;
+          ">
+            Deneyim
+          </div>
+          <div style="
+            font-size:0.95rem;
+            color:#0f172a;
+            line-height:1.5;
+          ">
+            Katip Çelebi Üniversite Hastanesi<br>
+            Bireysel Muayenehane (2014 - Güncel)
+          </div>
+        </div>
+
+        <div>
+          <div style="
+            font-size:0.75rem;
+            letter-spacing:0.08em;
+            color:#94a3b8;
+            margin-bottom:6px;
+          ">
+            Uzmanlık Alanları
+          </div>
+          <div style="
+            font-size:0.95rem;
+            color:#0f172a;
+            line-height:1.5;
+          ">
+            Girişmsel Kardiyoloji<br>
+            Anjiyo<br>
+            Kalp Ritim Bozukluklukları<br>
+            Operasyon Takibi ve Kontrolü<br>
+            Steroid Komplikasyonlarına Bağlı Kalp Rahatsızlıkları
+          </div>
+        </div>
+
+        
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT : IMAGE -->
+    <div class="bio-image">
+      <img 
+        src="doctor-who.jpg"
+        alt="Dr. Emre Mengi"
+        style="
+          width:100%;
+          border-radius:22px;
+          object-fit:cover;
+          max-height: 400px;
+        "
+      >
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ── ALINTI (daha duygusal) ── -->
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-content reveal">
+      <i class="fas fa-quote-left"></i>
+      <h2>"Benim için başarı; hastamın 10 yıl sonra bile 'İyi ki Dr. Emre'ye gitmişim' demesidir."</h2>
+      <p>— Uzm. Dr. Emre Mengi</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── HASTA YORUMLARI (opsiyonel ek güç) ── -->
+<section style="padding: 100px 0; background:#f8faff;">
+  <div class="container">
+    <h2 class="reveal">Hastalarımız Ne Diyor?</h2>
+    <div class="testimonials-grid" style="
+  display:flex;
+  flex-direction:column;
+  gap:32px;
+">
+
+      <div class="testimonial-card reveal">
+        <p class="testimonial-quote">“75 yaşındaki annemin kalp ve damar kontrolü için gittik. Emre Bey'in ve ekibinin ilgi ve alakası çok güzeldi. Son teknoloji bir çok cihaz klinikte mevcuk. Detaylı bir kontrol tek bir muayenede gerçekleşebiliyor. Emre Bey'in Aliağa için büyük bir şans ve imkan olduğunu düşünüyoruz. Çevremizdeki herkese tavsiye ettik.”</p>
+        <div style="
+  margin:16px 0 12px;
+  color:#fbbf24;
+  font-size:0.95rem;
+">
+  ★★★★★
+</div>
+
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:#ddd;"></div>
+          <div>
+            <div class="author-name">Melike K.</div>
+            <div class="author-role">Genel Muayene (Google Yorumları)</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <p class="testimonial-quote">“Geçmiş yıllarda koroner yoğun bakımda çalışmış bir hemşire olarak Emre Bey’i araştırıp 2 ay önce çarpıntı şikayeti ile gittim. Muayenesinden çok memnun kaldım. Ekg ve ritim holter ile durumumun tanısını koydu. İlacımı ve sürecimi tek tek tarif etti. Yaklaşımı ve donanımlı bilgisi sayesinde reçeteme başlayıp bir kaç günde toparladım.Aliağa için fayda sağlayacak bir hekim olduğunu düşünüyorum.Düzenli kontrollerime gideceğim.Çevremde benden sonra giden kişilerde benimle aynı fikirde oldular,hatta bazıları anjio ve devam eden tedavileri ile konforuna bile kavuştu. Emre Bey’e muayene olmayı düşünenler için kesinlikle tavsiye ederim.<br>
+        Bu arada çok tatlı ve güler yüzlü de  bir hemşiresi var :)”</p>
+        <div style="
+  margin:16px 0 12px;
+  color:#fbbf24;
+  font-size:0.95rem;
+">
+  ★★★★★
+</div>
+
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:#ddd;"></div>
+          <div>
+            <div class="author-name">Handan G.</div>
+            <div class="author-role">Genel Muayene (Google Yorumları)</div>
+          </div>
+        </div>
+      </div>
+      <!-- 2-3 tane daha benzer kart eklenebilir -->
+    </div>
+  </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <a href="#" class="footer-logo">Dr. EMRE <span>MENGİ</span></a>
+                <p class="footer-about">Kardiyoloji Uzmanı olarak, modern tıbbın tüm imkanlarını hasta odaklı yaklaşımla birleştiriyor, sağlıklı bir gelecek için profesyonel çözümler sunuyorum.</p>
+                <div class="social-row">
+                    <a href="https://www.instagram.com/dremremengi/" class="social-btn" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://www.linkedin.com/in/emre-mengi-501077180" class="social-btn" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-linkedin-in"></i>
+</a>
+                    <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="footer-head">Hizmetler</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Koroner Anjiyografi</a></li>
+                    <li><a href="#">Ritim Bozuklukları</a></li>
+                    <li><a href="#">Kalp Yetmezliği Takibi</a></li>
+                    <li><a href="#">Hipertansiyon Yönetimi</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-head">Kurumsal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Hakkımda</a></li>
+                    <li><a href="#">Blog Yazıları</a></li>
+                    <li><a href="#">Klinik Turu</a></li>
+                    <li><a href="#">Sıkça Sorulan Sorular</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-head">İletişim</h4>
+                <ul class="footer-links" style="color: var(--muted); font-size: 0.95rem;">
+                    <li><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--cardio);"></i> Atatürk Mahallesi<br>Aliağa, İzmir</li>
+                    <li><i class="fas fa-phone" style="margin-right: 10px; color: var(--cardio);"></i>0540 119 35 35</li>
+                    <li><i class="fas fa-envelope" style="margin-right: 10px; color: var(--cardio);"></i> emremengi.dr@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Uzm. Dr. Emre Mengi. Tüm hakları saklıdır.</p>
+            <div style="display:flex; gap: 20px;">
+                <a href="#" style="text-decoration:none; color:var(--muted);">KVKK Aydınlatma Metni</a>
+                <a href="#" style="text-decoration:none; color:var(--muted);">Gizlilik Politikası</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Simple Scroll Reveal Animation
+const observerOptions = { threshold: 0.1 };
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Nav Scroll Effect
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 50) {
+    nav.style.background = "rgba(255, 255, 255, 0.95)";
+    nav.style.boxShadow = "0 10px 30px rgba(0,0,0,0.05)";
+  } else {
+    nav.style.background = "white";
+    nav.style.boxShadow = "none";
+  }
+});
+</script>
+
+</body>
+</html>
